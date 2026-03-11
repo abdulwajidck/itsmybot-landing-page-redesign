@@ -969,23 +969,32 @@
       }
     }
 
-    /* FAQ Section */
+    /* FAQ Section - Neo Brutal Accordion */
     .faq-section { background: var(--bg-cream); }
     
-    .faq-item {
-      border: 3px solid var(--navy);
-      border-radius: var(--radius-md);
-      margin-bottom: 1rem;
-      background: var(--surface-white);
-      box-shadow: 4px 4px 0 var(--border-light);
-      overflow: hidden;
-      transition: all 0.2s;
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      margin-top: var(--space-lg);
     }
     
-    .faq-item:hover { box-shadow: 6px 6px 0 var(--sky); }
+    .faq-item {
+      background: var(--surface-white);
+      border: 4px solid var(--navy);
+      border-radius: var(--radius-md);
+      box-shadow: 6px 6px 0 var(--sky);
+      overflow: hidden;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    
+    .faq-item:nth-child(even) { box-shadow: 6px 6px 0 var(--coral); }
+    .faq-item:nth-child(3n) { box-shadow: 6px 6px 0 var(--yellow); }
+    
+    .faq-item:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--navy); }
     
     .faq-question {
-      padding: 1.5rem;
+      padding: var(--space-md);
       font-family: var(--font-display);
       font-weight: 800;
       font-size: 1.25rem;
@@ -994,19 +1003,42 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      user-select: none;
     }
     
     .faq-answer {
-      padding: 0 1.5rem 1.5rem;
+      padding: 0 var(--space-md) var(--space-md);
       display: none;
       font-size: 1.125rem;
+      color: var(--ink);
+      font-weight: 500;
     }
     
-    .faq-item.active .faq-answer { display: block; }
-    .faq-item.active .faq-question span { transform: rotate(45deg); }
-    .faq-question span { transition: transform 0.2s; font-size: 1.5rem; }
+    .faq-item.active .faq-answer { 
+      display: block; 
+      animation: fadeDown 0.3s ease forwards;
+      border-top: 2px dashed var(--border-light);
+      margin: 0 var(--space-md);
+      padding: var(--space-md) 0;
+    }
     
-    /* FAQ Section */
+    .faq-item.active .faq-question span { transform: rotate(135deg); background: var(--coral); color: white; }
+    .faq-question span { 
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s; 
+      font-size: 1.5rem; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--sky);
+      border: 2px solid var(--navy);
+    }
+    
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
     @media (max-width: 768px) {
       .mobile-header-cta {
         display: inline-flex;
@@ -1476,8 +1508,9 @@
   <!-- === CRO SECTION: FAQ === -->
   <section class="faq-section section-pad">
     <div class="container" style="max-width: 800px;">
-      <div class="fade-up" style="text-align: center; margin-bottom: 3rem;">
-        <h2 style="font-size: clamp(2rem, 4vw, 3rem);">Frequently Asked Questions</h2>
+      <div class="fade-up" style="text-align: center;">
+        <h2 style="font-size: clamp(2.5rem, 5vw, 4rem); color: var(--navy);"><span class="text-coral" style="text-shadow: 2px 2px 0 var(--border-light);">Curious?</span> Here are the Answers</h2>
+        <p style="color: var(--ink-muted); font-size: 1.25rem; margin-top: 1rem;">Everything you need to know about our masterclasses.</p>
       </div>
       
       <div class="faq-list">
@@ -1485,45 +1518,55 @@
           <div class="faq-question">Do I get a Certificate? <span>+</span></div>
           <div class="faq-answer">Upon successful completion of our course, you are entitled to get a certificate from us.</div>
         </div>
-        <div class="faq-item fade-up">
+        
+        <div class="faq-item fade-up" style="transition-delay: 100ms;">
           <div class="faq-question">How do I enroll in the courses? <span>+</span></div>
-          <div class="faq-answer">Easy and direct! We have a simple approach to enrolment. You can schedule a free assessment lesson, and after the session, you get a recommendation for a course that fits you the best. You will be asked to decide on the class format, and classes will be scheduled shortly based on your convenience. If you choose a Robotics course, the STEM kit will be shipped to you.</div>
+          <div class="faq-answer">Easy and direct! You can schedule a free assessment lesson, and after the session, you get a recommendation for a course that fits you best. You will decide on the class format, and classes will be scheduled based on your convenience. If you choose a Robotics course, the STEM kit will be shipped to you.</div>
         </div>
-        <div class="faq-item fade-up">
-          <div class="faq-question">What is the purpose of the assessment lesson? What can I expect? <span>+</span></div>
-          <div class="faq-answer">Everything we both need to know! You need to let us know the preferred course. If you are not sure, we will recommend the course that suits you. The instructor demonstrates the course in an approximately one-hour online session. This will be a “get to know” session to evaluate the level of understanding of the child so that we can recommend a suitable course. As a parent, you can find answers to your queries regarding the course structure and curriculum. A recommendation from the instructor will be sent to you soon after to help you decide on the course.</div>
+        
+        <div class="faq-item fade-up" style="transition-delay: 200ms;">
+          <div class="faq-question">What is the purpose of the assessment lesson? <span>+</span></div>
+          <div class="faq-answer">This is a “get to know” session to evaluate the level of understanding of your child so we can recommend a suitable course. As a parent, you can find answers to your queries regarding the course structure and curriculum. A recommendation will be sent to you soon after.</div>
         </div>
+        
         <div class="faq-item fade-up">
           <div class="faq-question">What to expect from our Software courses? <span>+</span></div>
-          <div class="faq-answer">From basics to advanced, and even customized! We offer live, 1-1, or 1-2, and group coding classes. You can choose the format once you decide to enroll. We offer an age-oriented approach covering programming fundamentals and transitioning to advanced concepts depending on the capabilities of the kids. There are courses in Scratch, App Building, and Python.</div>
+          <div class="faq-answer">From basics to advanced, and even customized! We offer live, 1-1, or 1-2, and group coding classes. We use an age-oriented approach covering programming fundamentals in Scratch, App Building, and Python.</div>
         </div>
-        <div class="faq-item fade-up">
+        
+        <div class="faq-item fade-up" style="transition-delay: 100ms;">
           <div class="faq-question">What to expect from our Robotics courses? <span>+</span></div>
-          <div class="faq-answer">Activity-oriented it is! Unlike our software courses, in this course, we use visually appealing hardware modules and extensions to make learning more activity oriented. Kids learn to program the robots with Scratch and Python. We offer live, 1-1 or 1-2, and group Robotics classes.</div>
+          <div class="faq-answer">Activity-oriented it is! We use visually appealing hardware modules and extensions. Kids learn to program the robots with Scratch and Python in live, 1-1, 1-2, or group Robotics classes.</div>
         </div>
-        <div class="faq-item fade-up">
+        
+        <div class="faq-item fade-up" style="transition-delay: 200ms;">
           <div class="faq-question">Who are our teachers? How do we select them? <span>+</span></div>
-          <div class="faq-answer">We will give our best to you! Our teachers are selected after multiple rounds of screening and interviews. Teachers go through a five-step selection process with a selection rate of 3%. They also undergo a one-month rigorous training before they start. Teachers regularly attend workshops conducted by professionals and are mentored throughout the process.</div>
+          <div class="faq-answer">We will give our best to you! Teachers go through a five-step selection process with an acceptance rate of 3%, followed by a rigorous one-month training before they start mentoring.</div>
         </div>
+        
         <div class="faq-item fade-up">
           <div class="faq-question">How do Group classes work? <span>+</span></div>
-          <div class="faq-answer">Looking forward to collaborating? Our group classes (maximum size 6) are prescheduled for two days a week. If you prefer them, please contact us, and we can guide you through the process.</div>
+          <div class="faq-answer">Looking forward to collaborating? Our group classes (maximum size 6) are prescheduled for two days a week. Contact us, and we can guide you through the process.</div>
         </div>
-        <div class="faq-item fade-up">
+        
+        <div class="faq-item fade-up" style="transition-delay: 100ms;">
           <div class="faq-question">For what age group do you have courses? <span>+</span></div>
-          <div class="faq-answer">Age can’t decide anything. Can it? Our courses start at age 5. We believe that age is not a barrier to learning. We have a range of course options suiting your age and coding background. We also have courses for adults looking for a career switch with Python.</div>
+          <div class="faq-answer">Age can’t decide anything. Can it? Our courses start at age 5, with ranges suiting different backgrounds. We also offer courses for adults looking for a career switch with Python.</div>
         </div>
-        <div class="faq-item fade-up">
+        
+        <div class="faq-item fade-up" style="transition-delay: 200ms;">
           <div class="faq-question">Do you provide physical Coding classes? <span>+</span></div>
           <div class="faq-answer">Not now! We don’t think it matters, do you? We are an online academy and do not provide physical classes currently.</div>
         </div>
+        
         <div class="faq-item fade-up">
           <div class="faq-question">Are children encouraged to take part in the competitions? <span>+</span></div>
           <div class="faq-answer">Definitely! We encourage them to participate in contests worldwide. We also organize competitions to prepare our students for challenges.</div>
         </div>
-        <div class="faq-item fade-up">
+        
+        <div class="faq-item fade-up" style="transition-delay: 100ms;">
           <div class="faq-question">Can kids design and build their own projects? <span>+</span></div>
-          <div class="faq-answer">That makes learning more fun! Yes, kids are encouraged to design and build their own projects. The instructors provide project ideas after every 10 sessions and ask the kids to develop them. There are assignments and regular homework in addition to projects to encourage self-learning.</div>
+          <div class="faq-answer">That makes learning more fun! Yes, kids are encouraged to design and build their own projects. The instructors provide project ideas after every 10 sessions. There are assignments and regular homework in addition to projects to encourage self-learning.</div>
         </div>
       </div>
     </div>
