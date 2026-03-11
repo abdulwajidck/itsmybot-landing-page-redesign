@@ -1006,38 +1006,14 @@
     .faq-item.active .faq-question span { transform: rotate(45deg); }
     .faq-question span { transition: transform 0.2s; font-size: 1.5rem; }
     
-    /* Sticky Mobile CTA */
-    .mobile-sticky-cta {
-      display: none;
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      background: var(--surface-white);
-      padding: 1rem;
-      border-top: 3px solid var(--navy);
-      z-index: 1000;
-      box-shadow: 0 -10px 20px rgba(0,0,0,0.05);
-    }
-    
-    .mobile-sticky-cta .btn {
-      width: 100%;
-      font-size: 1.125rem;
-      padding: 1rem;
-    }
-    
+    /* FAQ Section */
     @media (max-width: 768px) {
-      .mobile-sticky-cta { display: block; }
       .mobile-header-cta {
         display: inline-flex;
         padding: 0.5rem 1rem;
         font-size: 0.875rem;
         margin-left: auto;
       }
-      .nav-links { display: none; } /* Ensure desktop links hide on mobile */
-      body { padding-bottom: 80px; } /* Space for sticky CTA */
-      .step-grid { grid-template-columns: 1fr; }
-      .path-grid { grid-template-columns: 1fr; }
-      .masonry-grid { column-count: 1; }
-      .form-grid { grid-template-columns: 1fr; }
       .hero-visual { display: none; } /* Hide blocks on mobile for focus */
     }
   </style>
@@ -1633,35 +1609,6 @@
       const elementsToReveal = document.querySelectorAll(".fade-up, .reveal-wrap");
       elementsToReveal.forEach(el => revealObserver.observe(el));
       
-      /* --- STICKY CTA VISIBILITY LOGIC --- */
-      const mainHeroCta = document.querySelector(".hero .btn-submit");
-      const stickyCta = document.querySelector(".mobile-sticky-cta");
-      
-      if (mainHeroCta && stickyCta) {
-        const ctaObserver = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            // Hide sticky CTA when main hero CTA is visible
-            if (entry.isIntersecting) {
-              stickyCta.style.display = 'none';
-            } else {
-              // Only show it back if we are on mobile
-              if (window.innerWidth <= 768) {
-                stickyCta.style.display = 'block';
-              }
-            }
-          });
-        }, { threshold: 0 }); // Trigger as soon as 1px is visible
-        
-        ctaObserver.observe(mainHeroCta);
-        
-        // Handle resize events to ensure it stays hidden on desktop
-        window.addEventListener('resize', () => {
-          if (window.innerWidth > 768) {
-            stickyCta.style.display = 'none';
-          }
-        });
-      }
-      
       /* --- HEADER SCROLL STATE --- */
       const header = document.getElementById("header");
       window.addEventListener("scroll", () => {
@@ -1839,13 +1786,6 @@
       }
     }
   </style>
-
-  <!-- === MOBILE STICKY CTA === -->
-  <div class="mobile-sticky-cta">
-    <a href="#trial" class="btn btn-primary" style="background-color: var(--coral); color: white; display: flex; justify-content: center; font-size: 1.25rem;">
-      Book Free Class <span style="font-size: 1.5rem; line-height: 1; margin-left: 0.5rem;">→</span>
-    </a>
-  </div>
 
   <!-- === TACTICAL POPUP === -->
   <div id="tactical-popup" class="tactical-popup">
