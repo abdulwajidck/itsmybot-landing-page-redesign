@@ -866,7 +866,99 @@
       transform: rotate(10deg);
       border: 3px solid var(--surface-white);
     }
+    /* === NEW SECTION: TEACHERS === */
+    .teachers-section {
+      background: var(--sky);
+      position: relative;
+    }
     
+    .teachers-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-md);
+      margin-top: var(--space-lg);
+    }
+    
+    .teacher-stat-card {
+      background: var(--surface-white);
+      border: 3px solid var(--navy);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      box-shadow: 6px 6px 0 var(--coral);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .teacher-stat-card:nth-child(even) {
+      box-shadow: 6px 6px 0 var(--yellow);
+    }
+    
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1;
+    }
+    
+    /* === NEW SECTION: SUCCESS STORIES === */
+    .success-section {
+      background: var(--bg-cream);
+      position: relative;
+    }
+    
+    .success-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-md);
+      margin-top: var(--space-lg);
+    }
+    
+    .success-card {
+      background: var(--yellow);
+      border: 3px solid var(--navy);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      box-shadow: -6px 6px 0 var(--navy);
+    }
+    
+    .success-card:nth-child(even) {
+      background: var(--coral);
+      color: white;
+    }
+    
+    .success-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .success-quote {
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+      font-style: italic;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 2px dashed rgba(11, 27, 109, 0.2);
+    }
+    
+    .success-card:nth-child(even) .success-quote {
+      border-top: 2px dashed rgba(255, 255, 255, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .teachers-grid {
+        grid-template-columns: 1fr;
+      }
+      .success-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-default);
+      }
+      .success-card h3 {
+        font-size: 1.25rem;
+      }
+    }
+
     /* FAQ Section */
     .faq-section { background: var(--bg-cream); }
     
@@ -1306,6 +1398,80 @@
       </div>
     </section>
   </main>
+
+  <!-- === NEW SECTION: TEACHERS === -->
+  <section class="teachers-section section-pad">
+    <div class="container container-md text-center">
+      <h2 style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem;"><span class="text-coral" style="text-shadow: 2px 2px 0 var(--navy);">Passionate</span> Tech Educators</h2>
+      <p class="text-lead" style="margin-bottom: var(--space-lg);">
+        Our programs are led by qualified educators with experience in AI, robotics, coding, and STEM education. They foster creativity, critical thinking, and problem-solving skills in a supportive environment.
+      </p>
+      
+      <div class="teachers-grid">
+        <div class="teacher-stat-card fade-up" style="text-align: left;">
+          <div class="stat-number">3%</div>
+          <h3 style="font-size: 1.25rem; font-family: var(--font-body); margin-bottom: 0;">Acceptance Rate</h3>
+          <p style="color: var(--ink-muted); font-size: 0.95rem; margin-top: 0.5rem; line-height: 1.4;">We only hire the top 3% of applicants. Candidates go through a rigorous 5-step selection process with multiple rounds of interviews.</p>
+        </div>
+        
+        <div class="teacher-stat-card fade-up" style="transition-delay: 100ms; text-align: left;">
+          <div class="stat-number" style="color: var(--coral)">1Mo</div>
+          <h3 style="font-size: 1.25rem; font-family: var(--font-body); margin-bottom: 0;">Intensive Training</h3>
+          <p style="color: var(--ink-muted); font-size: 0.95rem; margin-top: 0.5rem; line-height: 1.4;">Before starting, every instructor goes through a one-month rigorous training program to master our child-friendly teaching approach.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: var(--space-lg); background: var(--surface-white); padding: var(--space-default); border: 2px dashed var(--navy); border-radius: var(--radius-sm);">
+        <ul style="list-style: none; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; font-family: var(--font-display); font-weight: 700; margin: 0; font-size: 1.1rem;">
+          <li>✓ Experienced STEM Mentors</li>
+          <li>✓ Child-Friendly Approach</li>
+          <li>✓ Hands-On Project Guidance</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- === NEW SECTION: SUCCESS STORIES === -->
+  <section class="success-section section-pad" style="border-top: var(--border-width) solid var(--navy); border-bottom: var(--border-width) solid var(--navy);">
+    <div class="container container-md text-center">
+      <h2 style="font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1rem;"><span class="text-yellow" style="text-shadow: 2px 2px 0 var(--navy);">Student Success</span> Stories</h2>
+      <p class="text-lead" style="margin-bottom: var(--space-lg);">
+        Don't just take our word for it. Hear what parents and future builders are saying from across the globe.
+      </p>
+
+      <div class="success-grid">
+        <div class="success-card fade-up" style="text-align: left;">
+          <h3>Dreyken & Laila Mdanat</h3>
+          <div style="font-weight: 700; font-family: var(--font-display); font-size: 0.9rem; text-transform: uppercase;">Built: Line-Following Robo</div>
+          <div class="success-quote">"My son has had the best experience with his classes... now at 9, he's about to finish his fourth certificate. The teachers are amazing, and the management is very professional."</div>
+        </div>
+
+        <div class="success-card fade-up" style="transition-delay: 100ms; text-align: left;">
+          <h3>Aryan & Harini Karthik</h3>
+          <div style="font-weight: 700; font-family: var(--font-display); font-size: 0.9rem; text-transform: uppercase;">Built: Hand-Following Robot</div>
+          <div class="success-quote">"Kids did a remote introductory robotics class and really enjoyed it and learned a lot. The teacher made it fun and was very flexible. Definitely recommend this!"</div>
+        </div>
+
+        <div class="success-card fade-up" style="transition-delay: 200ms; text-align: left;">
+          <h3>Elina Canavady</h3>
+          <div style="font-weight: 700; font-family: var(--font-display); font-size: 0.9rem; text-transform: uppercase;">Built: My Fairy Story with GenAI</div>
+          <div class="success-quote">"The creative process combined with AI tools allowed Elina to build interactive stories. Highly recommend for innovative kids!"</div>
+        </div>
+
+        <div class="success-card fade-up" style="transition-delay: 300ms; text-align: left;">
+          <h3>Vedant & Kristine Sargsyan</h3>
+          <div style="font-weight: 700; font-family: var(--font-display); font-size: 0.9rem; text-transform: uppercase;">Built: Obstacle-Avoiding Robot</div>
+          <div class="success-quote">"My son is 9 year old. He really enjoys the class at ItsMyBot. The online face-to-face video lesson works well for him. The teacher is responsive, knowledgeable, and patient."</div>
+        </div>
+      </div>
+      
+      <div style="margin-top: calc(var(--space-lg) * 1.5);">
+         <a href="#trial" class="btn btn-primary" onclick="smoothScroll(event, 'trial')" style="font-size: 1.25rem; font-weight: 900; box-shadow: 4px 4px 0 var(--yellow);">
+            Start Your Child's Success Story <span style="font-size: 1.5rem; margin-left: 0.25rem;">🚀</span>
+         </a>
+      </div>
+    </div>
+  </section>
 
   <!-- === CRO SECTION: FAQ === -->
   <section class="faq-section section-pad">
