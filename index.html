@@ -1316,20 +1316,48 @@
       
       <div class="faq-list">
         <div class="faq-item fade-up">
-          <div class="faq-question">What ages is this program for? <span>+</span></div>
-          <div class="faq-answer">Our curriculum is designed for kids ages 5 to 16, divided into specific age-appropriate paths (Little Coder, Junior Coder, Senior Coder, and Robo-Coder).</div>
+          <div class="faq-question">Do I get a Certificate? <span>+</span></div>
+          <div class="faq-answer">Upon successful completion of our course, you are entitled to get a certificate from us.</div>
         </div>
         <div class="faq-item fade-up">
-          <div class="faq-question">Do we need any prior coding experience? <span>+</span></div>
-          <div class="faq-answer">None at all! We start from the absolute basics with visual block programming for younger kids, and progress to typed Python and Javascript.</div>
+          <div class="faq-question">How do I enroll in the courses? <span>+</span></div>
+          <div class="faq-answer">Easy and direct! We have a simple approach to enrolment. You can schedule a free assessment lesson, and after the session, you get a recommendation for a course that fits you the best. You will be asked to decide on the class format, and classes will be scheduled shortly based on your convenience. If you choose a Robotics course, the STEM kit will be shipped to you.</div>
         </div>
         <div class="faq-item fade-up">
-          <div class="faq-question">Are the classes really 1-on-1? <span>+</span></div>
-          <div class="faq-answer">Yes. Every child gets a dedicated expert instructor to themselves for a full 60 minutes. No group classes, zero distractions.</div>
+          <div class="faq-question">What is the purpose of the assessment lesson? What can I expect? <span>+</span></div>
+          <div class="faq-answer">Everything we both need to know! You need to let us know the preferred course. If you are not sure, we will recommend the course that suits you. The instructor demonstrates the course in an approximately one-hour online session. This will be a “get to know” session to evaluate the level of understanding of the child so that we can recommend a suitable course. As a parent, you can find answers to your queries regarding the course structure and curriculum. A recommendation from the instructor will be sent to you soon after to help you decide on the course.</div>
         </div>
         <div class="faq-item fade-up">
-          <div class="faq-question">What do we need for the free class? <span>+</span></div>
-          <div class="faq-answer">Just a laptop or desktop computer with an internet connection and a webcam. We'll send you a private Zoom link via WhatsApp before the class begins.</div>
+          <div class="faq-question">What to expect from our Software courses? <span>+</span></div>
+          <div class="faq-answer">From basics to advanced, and even customized! We offer live, 1-1, or 1-2, and group coding classes. You can choose the format once you decide to enroll. We offer an age-oriented approach covering programming fundamentals and transitioning to advanced concepts depending on the capabilities of the kids. There are courses in Scratch, App Building, and Python.</div>
+        </div>
+        <div class="faq-item fade-up">
+          <div class="faq-question">What to expect from our Robotics courses? <span>+</span></div>
+          <div class="faq-answer">Activity-oriented it is! Unlike our software courses, in this course, we use visually appealing hardware modules and extensions to make learning more activity oriented. Kids learn to program the robots with Scratch and Python. We offer live, 1-1 or 1-2, and group Robotics classes.</div>
+        </div>
+        <div class="faq-item fade-up">
+          <div class="faq-question">Who are our teachers? How do we select them? <span>+</span></div>
+          <div class="faq-answer">We will give our best to you! Our teachers are selected after multiple rounds of screening and interviews. Teachers go through a five-step selection process with a selection rate of 3%. They also undergo a one-month rigorous training before they start. Teachers regularly attend workshops conducted by professionals and are mentored throughout the process.</div>
+        </div>
+        <div class="faq-item fade-up">
+          <div class="faq-question">How do Group classes work? <span>+</span></div>
+          <div class="faq-answer">Looking forward to collaborating? Our group classes (maximum size 6) are prescheduled for two days a week. If you prefer them, please contact us, and we can guide you through the process.</div>
+        </div>
+        <div class="faq-item fade-up">
+          <div class="faq-question">For what age group do you have courses? <span>+</span></div>
+          <div class="faq-answer">Age can’t decide anything. Can it? Our courses start at age 5. We believe that age is not a barrier to learning. We have a range of course options suiting your age and coding background. We also have courses for adults looking for a career switch with Python.</div>
+        </div>
+        <div class="faq-item fade-up">
+          <div class="faq-question">Do you provide physical Coding classes? <span>+</span></div>
+          <div class="faq-answer">Not now! We don’t think it matters, do you? We are an online academy and do not provide physical classes currently.</div>
+        </div>
+        <div class="faq-item fade-up">
+          <div class="faq-question">Are children encouraged to take part in the competitions? <span>+</span></div>
+          <div class="faq-answer">Definitely! We encourage them to participate in contests worldwide. We also organize competitions to prepare our students for challenges.</div>
+        </div>
+        <div class="faq-item fade-up">
+          <div class="faq-question">Can kids design and build their own projects? <span>+</span></div>
+          <div class="faq-answer">That makes learning more fun! Yes, kids are encouraged to design and build their own projects. The instructors provide project ideas after every 10 sessions and ask the kids to develop them. There are assignments and regular homework in addition to projects to encourage self-learning.</div>
         </div>
       </div>
     </div>
@@ -1520,6 +1548,45 @@
         }
       });
     });
+    
+    /* --- TACTICAL POPUP LOGIC --- */
+    // If user is idle (not scrolling/moving mouse) for 15 seconds, trigger a graceful popup
+    let idleTime = 0;
+    let popupShown = false;
+    
+    const popup = document.getElementById('tactical-popup');
+    const btnClose = document.getElementById('tactical-popup-close');
+    const btnDismiss = document.getElementById('tactical-popup-dismiss');
+    const btnCta = document.getElementById('tactical-popup-cta');
+
+    const idleInterval = setInterval(() => {
+      idleTime++;
+      // Show if idle for 15 seconds
+      if (idleTime > 15 && !popupShown) {
+        showTacticalPopup();
+      }
+    }, 1000);
+
+    const activityEvents = ['mousemove', 'keypress', 'scroll', 'touchstart'];
+    activityEvents.forEach(event => {
+      document.addEventListener(event, () => {
+        idleTime = 0; // Reset timer on activity
+      });
+    });
+
+    function showTacticalPopup() {
+      if(popupShown) return;
+      popup.classList.add('show');
+      popupShown = true;
+    }
+
+    function closePopup() {
+      popup.classList.remove('show');
+    }
+
+    btnClose.addEventListener('click', closePopup);
+    btnDismiss.addEventListener('click', closePopup);
+    btnCta.addEventListener('click', closePopup); // Close when they click to scroll to form  
   </script>
 
   <!-- === MOBILE STICKY CTA === -->
@@ -1527,6 +1594,18 @@
     <a href="#trial" class="btn btn-primary" style="background-color: var(--coral); color: white; display: flex; justify-content: center; font-size: 1.25rem;">
       Book Free Class <span style="font-size: 1.5rem; line-height: 1; margin-left: 0.5rem;">→</span>
     </a>
+  </div>
+
+  <!-- === TACTICAL POPUP === -->
+  <div id="tactical-popup" class="tactical-popup">
+    <button id="tactical-popup-close" class="tactical-popup-close">&times;</button>
+    <div class="tactical-popup-content">
+      <div style="font-size: 3.5rem; margin-bottom: 0.5rem; line-height: 1;">🚀</div>
+      <h3 style="font-family: var(--font-display); font-size: 1.5rem; color: var(--navy); margin-bottom: 0.5rem; letter-spacing: -0.5px;">Lost in space?</h3>
+      <p style="color: var(--ink-muted); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.5;">Mission Control is waiting for your signal. Let's get your child building their first project today.</p>
+      <a href="#trial" class="btn btn-primary" id="tactical-popup-cta" style="width: 100%; justify-content: center; margin-bottom: 1rem; background-color: var(--yellow); color: var(--navy);">Launch Free Class!</a>
+      <button id="tactical-popup-dismiss" style="background: none; border: none; font-family: var(--font-body); color: var(--navy); font-weight: 700; cursor: pointer; text-decoration: underline; font-size: 0.85rem;">I'm just exploring</button>
+    </div>
   </div>
 </body>
 </html>
