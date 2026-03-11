@@ -212,6 +212,10 @@
       object-fit: contain;
     }
     
+    .mobile-header-cta {
+      display: none;
+    }
+    
     .nav-links {
       display: flex;
       gap: 2rem;
@@ -726,7 +730,9 @@
     }
     
     .btn-submit {
-      width: 100%;
+      width: calc(100% - 16px);
+      margin-left: 4px; /* Give room for transform: translate(-4px) so it doesn't touch the very edge */
+      box-sizing: border-box;
       padding: 1.5rem;
       background: var(--coral);
       border: 4px solid var(--navy);
@@ -1019,6 +1025,13 @@
     
     @media (max-width: 768px) {
       .mobile-sticky-cta { display: block; }
+      .mobile-header-cta {
+        display: inline-flex;
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+        margin-left: auto;
+      }
+      .nav-links { display: none; } /* Ensure desktop links hide on mobile */
       body { padding-bottom: 80px; } /* Space for sticky CTA */
       .step-grid { grid-template-columns: 1fr; }
       .path-grid { grid-template-columns: 1fr; }
@@ -1039,6 +1052,7 @@
           <!-- Using the provided logo image -->
           <img src="images/itsmybot.com-wp-content-uploads-2024-09-ItsMyBot-Logo.png-2 copy.webp" alt="ItsMyBot Logo" />
         </a>
+        <a href="#trial" class="btn btn-primary mobile-header-cta">Free Trial</a>
         <div class="nav-links">
           <a href="#story">Our Story</a>
           <a href="#courses">Courses</a>
@@ -1057,7 +1071,7 @@
       
       <div class="container">
         <div class="hero-grid">
-          <div class="hero-content reveal-wrap">
+          <div class="hero-content">
             
             <div class="hero-eyebrow fade-up delay-1">
               <span>★</span> Top 1% of Global Tech Instructors
@@ -1617,6 +1631,35 @@
       
       const elementsToReveal = document.querySelectorAll(".fade-up, .reveal-wrap");
       elementsToReveal.forEach(el => revealObserver.observe(el));
+      
+      /* --- STICKY CTA VISIBILITY LOGIC --- */
+      const mainHeroCta = document.querySelector(".hero .btn-submit");
+      const stickyCta = document.querySelector(".mobile-sticky-cta");
+      
+      if (mainHeroCta && stickyCta) {
+        const ctaObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            // Hide sticky CTA when main hero CTA is visible
+            if (entry.isIntersecting) {
+              stickyCta.style.display = 'none';
+            } else {
+              // Only show it back if we are on mobile
+              if (window.innerWidth <= 768) {
+                stickyCta.style.display = 'block';
+              }
+            }
+          });
+        }, { threshold: 0 }); // Trigger as soon as 1px is visible
+        
+        ctaObserver.observe(mainHeroCta);
+        
+        // Handle resize events to ensure it stays hidden on desktop
+        window.addEventListener('resize', () => {
+          if (window.innerWidth > 768) {
+            stickyCta.style.display = 'none';
+          }
+        });
+      }
       
       /* --- HEADER SCROLL STATE --- */
       const header = document.getElementById("header");
