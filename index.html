@@ -803,6 +803,134 @@
         --space-lg: 3rem;
       }
     }
+    /* === CRO ADDITIONS (PAID ADS) === */
+    /* Trust Strip */
+    .hero-trust-strip {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 2px dashed rgba(11, 27, 109, 0.2);
+    }
+    
+    .trust-logos {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.75rem;
+      opacity: 0.6;
+      filter: grayscale(100%);
+    }
+    
+    .trust-logos img {
+      height: 24px;
+    }
+    
+    /* How It Works (1-2-3) */
+    .how-it-works {
+      background: var(--surface-white);
+      position: relative;
+    }
+    
+    .step-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+      margin-top: var(--space-lg);
+    }
+    
+    .step-card {
+      padding: var(--space-md);
+      border: 3px solid var(--navy);
+      border-radius: var(--radius-md);
+      background: var(--bg-cream);
+      position: relative;
+      box-shadow: 6px 6px 0 var(--sky);
+    }
+    
+    .step-card:nth-child(2) { box-shadow: 6px 6px 0 var(--yellow); }
+    .step-card:nth-child(3) { box-shadow: 6px 6px 0 var(--coral); }
+    
+    .step-number {
+      position: absolute;
+      top: -20px; right: -10px;
+      width: 50px; height: 50px;
+      background: var(--navy);
+      color: white;
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transform: rotate(10deg);
+      border: 3px solid var(--surface-white);
+    }
+    
+    /* FAQ Section */
+    .faq-section { background: var(--bg-cream); }
+    
+    .faq-item {
+      border: 3px solid var(--navy);
+      border-radius: var(--radius-md);
+      margin-bottom: 1rem;
+      background: var(--surface-white);
+      box-shadow: 4px 4px 0 var(--border-light);
+      overflow: hidden;
+      transition: all 0.2s;
+    }
+    
+    .faq-item:hover { box-shadow: 6px 6px 0 var(--sky); }
+    
+    .faq-question {
+      padding: 1.5rem;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--navy);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .faq-answer {
+      padding: 0 1.5rem 1.5rem;
+      display: none;
+      font-size: 1.125rem;
+    }
+    
+    .faq-item.active .faq-answer { display: block; }
+    .faq-item.active .faq-question span { transform: rotate(45deg); }
+    .faq-question span { transition: transform 0.2s; font-size: 1.5rem; }
+    
+    /* Sticky Mobile CTA */
+    .mobile-sticky-cta {
+      display: none;
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--surface-white);
+      padding: 1rem;
+      border-top: 3px solid var(--navy);
+      z-index: 1000;
+      box-shadow: 0 -10px 20px rgba(0,0,0,0.05);
+    }
+    
+    .mobile-sticky-cta .btn {
+      width: 100%;
+      font-size: 1.125rem;
+      padding: 1rem;
+    }
+    
+    @media (max-width: 768px) {
+      .mobile-sticky-cta { display: block; }
+      body { padding-bottom: 80px; } /* Space for sticky CTA */
+      .step-grid { grid-template-columns: 1fr; }
+      .path-grid { grid-template-columns: 1fr; }
+      .masonry-grid { column-count: 1; }
+      .form-grid { grid-template-columns: 1fr; }
+      .hero-visual { display: none; } /* Hide blocks on mobile for focus */
+    }
   </style>
 </head>
 
@@ -856,8 +984,24 @@
                 <span style="font-size: 1.5rem; line-height: 1;">→</span>
               </a>
               <p style="margin-top: 1rem; font-size: 0.875rem; font-weight: 700; color: var(--navy);">
-                No credit card. No commitment. 100% Free.
+                🔒 No credit card. No commitment. 100% Free.
               </p>
+            </div>
+            
+            <div class="hero-trust-strip fade-up" style="animation-delay: 0.8s;">
+              <p style="font-size: 0.875rem; font-weight: 800; text-transform: uppercase;">Curriculum designed by experts from:</p>
+              <div class="trust-logos">
+                <img src="images/company_logo_1.png" alt="Company Logo" style="height: 28px; filter: grayscale(100%) opacity(0.7); mix-blend-mode: multiply;" />
+                <img src="images/company_logo_2.png" alt="Company Logo" style="height: 28px; filter: grayscale(100%) opacity(0.7); mix-blend-mode: multiply;" />
+                <img src="images/company_logo_3.png" alt="Company Logo" style="height: 32px; filter: grayscale(100%) opacity(0.7); mix-blend-mode: multiply;" />
+                <img src="images/company_logo_4.png" alt="Company Logo" style="height: 36px; filter: grayscale(100%) opacity(0.7); mix-blend-mode: multiply;" />
+                <img src="images/company_logo_5.png" alt="Company Logo" style="height: 28px; filter: grayscale(100%) opacity(0.7); mix-blend-mode: multiply;" />
+                <img src="images/company_logo_6.png" alt="Company Logo" style="height: 32px; filter: grayscale(100%) opacity(0.7); mix-blend-mode: multiply;" />
+                <a href="#reviews" style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-left: auto; text-decoration: none; background: #00b67a; padding: 4px 8px; border-radius: 4px;">
+                  <img src="https://cdn.trustpilot.net/brand-assets/4.1.0/logo-white.svg" alt="Trustpilot" style="height: 16px; margin-bottom: 2px;" />
+                  <img src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-4.5.svg" alt="4.8 out of 5 stars" style="height: 14px;" />
+                </a>
+              </div>
             </div>
             
           </div>
@@ -918,6 +1062,42 @@
           </h2>
         </div>
         
+      </div>
+    </section>
+
+    <!-- === CRO SECTION: HOW IT WORKS === -->
+    <section class="how-it-works section-pad">
+      <div class="container">
+        <div class="fade-up" style="text-align: center;">
+          <h2 style="font-size: clamp(2.5rem, 5vw, 4rem);">How to start <span class="text-sky">building.</span></h2>
+          <p style="margin: 1rem auto; max-width: 600px;">Three simple steps to go from passive consumer to active creator. We handle all the setup.</p>
+        </div>
+        
+        <div class="step-grid">
+          
+          <div class="step-card fade-up delay-1">
+            <div class="step-number">1</div>
+            <h3 style="margin-bottom: 0.5rem; font-size: 1.5rem;">Book a Spot</h3>
+            <p style="font-size: 1rem; color: var(--ink-muted);">Takes 60 seconds. Choose a time that works for your child's schedule.</p>
+          </div>
+          
+          <div class="step-card fade-up delay-2">
+            <div class="step-number">2</div>
+            <h3 style="margin-bottom: 0.5rem; font-size: 1.5rem;">Meet the Expert</h3>
+            <p style="font-size: 1rem; color: var(--ink-muted);">Get a private Zoom link via WhatsApp. Join the live 1-on-1 session.</p>
+          </div>
+          
+          <div class="step-card fade-up delay-3">
+            <div class="step-number">3</div>
+            <h3 style="margin-bottom: 0.5rem; font-size: 1.5rem;">Build a Game</h3>
+            <p style="font-size: 1rem; color: var(--ink-muted);">In their very first class, your child will write code and build a working game.</p>
+          </div>
+          
+        </div>
+        
+        <div class="fade-up" style="text-align: center; margin-top: 3rem;">
+          <a href="#trial" class="btn btn-primary">Start Step 1 Now</a>
+        </div>
       </div>
     </section>
 
@@ -1001,9 +1181,13 @@
           <h2 class="display-text" style="font-size: clamp(3rem, 6vw, 5rem);">
             Don't just take <span class="text-yellow">our word</span> for it.
           </h2>
-          <p style="margin: 1rem auto; color: var(--border-light); font-size: 1.25rem;">
-            Rated 4.8/5 on Trustpilot by thousands of parents globally.
-          </p>
+          <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; margin: 1.5rem auto 2rem;">
+            <p style="color: var(--border-light); font-size: 1.25rem; font-weight: 600; margin: 0;">
+              Rated 4.8/5 by thousands of parents globally on
+            </p>
+            <img src="https://cdn.trustpilot.net/brand-assets/4.1.0/logo-white.svg" alt="Trustpilot" style="height: 32px;" />
+            <img src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-4.5.svg" alt="4.8 out of 5 stars" style="height: 28px;" />
+          </div>
         </div>
         
         <div class="masonry-grid">
@@ -1128,6 +1312,34 @@
       </div>
     </section>
   </main>
+
+  <!-- === CRO SECTION: FAQ === -->
+  <section class="faq-section section-pad">
+    <div class="container" style="max-width: 800px;">
+      <div class="fade-up" style="text-align: center; margin-bottom: 3rem;">
+        <h2 style="font-size: clamp(2rem, 4vw, 3rem);">Frequently Asked Questions</h2>
+      </div>
+      
+      <div class="faq-list">
+        <div class="faq-item fade-up">
+          <div class="faq-question">What ages is this program for? <span>+</span></div>
+          <div class="faq-answer">Our curriculum is designed for kids ages 5 to 16, divided into specific age-appropriate paths (Little Coder, Junior Coder, Senior Coder, and Robo-Coder).</div>
+        </div>
+        <div class="faq-item fade-up">
+          <div class="faq-question">Do we need any prior coding experience? <span>+</span></div>
+          <div class="faq-answer">None at all! We start from the absolute basics with visual block programming for younger kids, and progress to typed Python and Javascript.</div>
+        </div>
+        <div class="faq-item fade-up">
+          <div class="faq-question">Are the classes really 1-on-1? <span>+</span></div>
+          <div class="faq-answer">Yes. Every child gets a dedicated expert instructor to themselves for a full 60 minutes. No group classes, zero distractions.</div>
+        </div>
+        <div class="faq-item fade-up">
+          <div class="faq-question">What do we need for the free class? <span>+</span></div>
+          <div class="faq-answer">Just a laptop or desktop computer with an internet connection and a webcam. We'll send you a private Zoom link via WhatsApp before the class begins.</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- === FOOTER === -->
   <footer class="site-footer">
@@ -1294,6 +1506,28 @@
     `;
     document.head.appendChild(style);
     
+    /* --- FAQ INTERACTION --- */
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.parentElement;
+        const isActive = item.classList.contains('active');
+        
+        // Close all others
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        
+        // Open clicked if it wasn't active
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+    });
   </script>
+
+  <!-- === MOBILE STICKY CTA === -->
+  <div class="mobile-sticky-cta">
+    <a href="#trial" class="btn btn-primary" style="background-color: var(--coral); color: white; display: flex; justify-content: center; font-size: 1.25rem;">
+      Book Free Class <span style="font-size: 1.5rem; line-height: 1; margin-left: 0.5rem;">→</span>
+    </a>
+  </div>
 </body>
 </html>
